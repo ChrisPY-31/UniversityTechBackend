@@ -27,10 +27,12 @@ public class Video {
 
     private int durationSeg;
 
+    @Column(name = "\"order\"")
     private int order;
 
     private boolean publicate;
 
+    @Column(name = "\"created\"")
     private LocalDate create;
 
     @ManyToOne

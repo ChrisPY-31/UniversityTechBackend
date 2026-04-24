@@ -1,6 +1,5 @@
 package com.example.nexustechuniversity.Model;
 
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -32,6 +31,7 @@ public class Curso {
 
     private String image;
 
+    @Column(name = "\"create\"")
     private LocalDate create;
 
     @OneToMany(mappedBy = "curso")

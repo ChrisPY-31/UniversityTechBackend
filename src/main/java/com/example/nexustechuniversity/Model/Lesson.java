@@ -27,6 +27,7 @@ public class Lesson {
 
     private String summary;
 
+    @Column(name = "\"order\"")
     private int order;
 
     private boolean publicate;

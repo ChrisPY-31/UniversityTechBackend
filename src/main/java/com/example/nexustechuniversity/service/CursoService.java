@@ -4,6 +4,7 @@ import com.example.nexustechuniversity.Dto.CursoDto;
 import com.example.nexustechuniversity.mapper.CursoMapper;
 import com.example.nexustechuniversity.repository.CursoRepository;
 import com.example.nexustechuniversity.service.Impl.ICursoService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class CursoService implements ICursoService {
 
+	@Autowired
     private final CursoRepository cursoRepository;
 
     public CursoService(CursoRepository cursoRepository) {
