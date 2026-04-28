@@ -6,6 +6,8 @@ import java.util.List;
 
 public interface IVideoService {
 
+    List<VideoDto> getVideos();
+
     List<VideoDto> createVideos(List<VideoDto> videos);
 
     VideoDto updateVideo(VideoDto videos);

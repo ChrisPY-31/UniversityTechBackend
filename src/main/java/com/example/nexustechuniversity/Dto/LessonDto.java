@@ -9,7 +9,9 @@ import lombok.*;
 @Builder
 public class LessonDto {
 
-    private long idlesson;
+    private long idLesson;
+
+    private long idCurso;
 
     private String title;
 
@@ -18,5 +20,7 @@ public class LessonDto {
     private String summary;
 
     private int order;
+
+    private boolean publicate;
 
 }
