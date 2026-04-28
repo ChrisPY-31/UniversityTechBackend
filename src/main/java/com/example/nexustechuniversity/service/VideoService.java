@@ -9,6 +9,10 @@ import java.util.List;
 @Service
 public class VideoService implements IVideoService {
 
+    @Override
+    public List<VideoDto> getVideos() {
+        return List.of();
+    }
 
     @Override
     public List<VideoDto> createVideos(List<VideoDto> videos) {

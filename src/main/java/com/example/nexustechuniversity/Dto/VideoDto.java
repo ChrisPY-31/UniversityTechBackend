@@ -14,7 +14,7 @@ public class VideoDto {
 
     private long idLesson;
 
-    private String titulo;
+    private String title;
 
     private String urlVideo;
 

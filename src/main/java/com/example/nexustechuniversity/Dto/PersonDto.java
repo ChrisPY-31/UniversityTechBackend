@@ -13,7 +13,7 @@ public class PersonDto {
 
     private String name;
 
-    private String lastname;
+    private String lastName;
 
     private String phone;
 

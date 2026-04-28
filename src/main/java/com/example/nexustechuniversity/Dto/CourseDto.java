@@ -2,12 +2,14 @@ package com.example.nexustechuniversity.Dto;
 
 import lombok.*;
 
+import java.time.LocalDate;
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class CursoDto {
+public class CourseDto {
 
     private long idCurso;
 
@@ -18,5 +20,9 @@ public class CursoDto {
     private String category;
 
     private String nevel;
+
+    private String image;
+
+    private LocalDate create;
 
 }
