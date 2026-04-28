@@ -36,13 +36,17 @@ public class JwtService {
 
 	public String generateToken(UserDetails userDetails) {
 		return Jwts.builder().setSubject(userDetails.getUsername()).setIssuedAt(new Date())
-				.setExpiration(new Date(System.currentTimeMillis() * 1000 * 60 * 60 * 24))
+				.setExpiration(new Date(System.currentTimeMillis() + 1000L * 60 * 60 * 24))
 				.signWith(getSingKey(), SignatureAlgorithm.HS256).compact();
 	}
 
 	public boolean isValidToken(String token, UserDetails userDetails) {
 		final String username = extractUsername(token);
-		return username.equals(userDetails.getUsername());
+		return username.equals(userDetails.getUsername()) && !isTokenExpired(token);
+	}
+
+	private boolean isTokenExpired(String token) {
+		return extractClaim(token, Claims::getExpiration).before(new Date());
 	}
 
 }
