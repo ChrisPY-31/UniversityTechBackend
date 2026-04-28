@@ -1,6 +1,6 @@
 package com.example.nexustechuniversity.controller;
 
-import com.example.nexustechuniversity.Dto.CursoDto;
+import com.example.nexustechuniversity.Dto.CourseDto;
 import com.example.nexustechuniversity.service.Impl.ICursoService;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -19,9 +19,9 @@ public class CursoController {
 
     @PreAuthorize("isAuthenticated()")
     @GetMapping("cursos")
-    public ResponseEntity<Page<CursoDto>> getCursos(@RequestParam(defaultValue = "0") int pageNumber ,
-                                                 @RequestParam(defaultValue = "10") int pageSize){
-        Page<CursoDto> cursoPage = cursoService.getPaginatedCursos(pageNumber , pageSize);
+    public ResponseEntity<Page<CourseDto>> getCursos(@RequestParam(defaultValue = "0") int pageNumber ,
+                                                     @RequestParam(defaultValue = "10") int pageSize){
+        Page<CourseDto> cursoPage = cursoService.getPaginatedCursos(pageNumber , pageSize);
         return ResponseEntity.ok(cursoPage);
     }
 

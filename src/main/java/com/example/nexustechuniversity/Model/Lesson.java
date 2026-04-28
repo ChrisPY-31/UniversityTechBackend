@@ -9,7 +9,7 @@ import lombok.Setter;
 import java.util.List;
 
 @Entity
-@Table(name = "lesson")
+@Table(name = "lessons")
 @Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
@@ -17,9 +17,11 @@ public class Lesson {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_lesson")
     private long idLesson;
 
-    private long idCurso;
+    @Column(name = "id_course")
+    private long idCourse;
 
     private String title;
 
@@ -27,16 +29,13 @@ public class Lesson {
 
     private String summary;
 
-    @Column(name = "\"order\"")
-    private int order;
-
-    private boolean publicate;
+    private boolean published;
 
     @OneToMany(mappedBy = "lesson")
     private List<Video> videos;
 
     @ManyToOne
-    @JoinColumn(name = "idCurso" , referencedColumnName = "idCurso" , insertable = false,updatable = false )
-    private Curso curso;
+    @JoinColumn(name = "id_course" , referencedColumnName = "id_course" , insertable = false,updatable = false )
+    private Course course;
 
 }

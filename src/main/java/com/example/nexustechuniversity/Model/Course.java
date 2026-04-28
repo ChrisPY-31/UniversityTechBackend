@@ -10,16 +10,17 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-@Table(name = "curso")
+@Table(name = "courses")
 @Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class Curso {
+public class Course {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idCurso;
+    @Column(name = "id_course")
+    private long idCourse;
 
     private String title;
 
@@ -31,9 +32,9 @@ public class Curso {
 
     private String image;
 
-    @Column(name = "\"create\"")
-    private LocalDate create;
+    @Column(name = "create_at")
+    private LocalDate createAt;
 
-    @OneToMany(mappedBy = "curso")
+    @OneToMany(mappedBy = "course")
     List<Lesson> lessons;
 }

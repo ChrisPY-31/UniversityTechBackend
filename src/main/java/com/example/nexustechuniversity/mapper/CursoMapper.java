@@ -1,7 +1,7 @@
 package com.example.nexustechuniversity.mapper;
 
-import com.example.nexustechuniversity.Dto.CursoDto;
-import com.example.nexustechuniversity.Model.Curso;
+import com.example.nexustechuniversity.Dto.CourseDto;
+import com.example.nexustechuniversity.Model.Course;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -10,9 +10,9 @@ public interface CursoMapper {
 
     CursoMapper INSTANCE = Mappers.getMapper(CursoMapper.class);
 
-    Curso toCurso(CursoDto cursoDto);
+    Course toCurso(CourseDto courseDto);
 
-    CursoDto toCursoDto(Curso curso);
+    CourseDto toCursoDto(Course course);
 
 
 }
