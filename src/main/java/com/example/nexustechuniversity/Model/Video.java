@@ -31,7 +31,7 @@ public class Video {
     @Column(name = "duration_seg")
     private int durationSeg;
 
-    private boolean publicate;
+    private boolean published;
 
     @Column(name = "create_at")
     private LocalDate createAt;

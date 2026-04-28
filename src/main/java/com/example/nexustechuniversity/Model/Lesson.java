@@ -29,7 +29,7 @@ public class Lesson {
 
     private String summary;
 
-    private boolean publicate;
+    private boolean published;
 
     @OneToMany(mappedBy = "lesson")
     private List<Video> videos;
