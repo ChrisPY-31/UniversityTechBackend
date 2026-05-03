@@ -25,8 +25,6 @@ public class Lesson {
 
     private String title;
 
-    private String description;
-
     private String summary;
 
     private boolean published;

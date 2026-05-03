@@ -41,8 +41,8 @@ public class CourseService implements ICourseService {
 
     @Override
     public CourseDto updateCurso(CourseDto curso) {
-        cursoRepository.findById(curso.getIdCurso())
-                .orElseThrow(() -> new NoSuchElementException("Curso no encontrado: " + curso.getIdCurso()));
+        cursoRepository.findById(curso.getIdCourse())
+                .orElseThrow(() -> new NoSuchElementException("Curso no encontrado: " + curso.getIdCourse()));
         return CourseMapper.INSTANCE.toCursoDto(cursoRepository.save(CourseMapper.INSTANCE.toCurso(curso)));
     }
 

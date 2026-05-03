@@ -33,7 +33,7 @@ public class Course {
     private String image;
 
     @Column(name = "create_at")
-    private LocalDate createAt;
+    private LocalDate createAt = LocalDate.now();
 
     @OneToMany(mappedBy = "course")
     List<Lesson> lessons;

@@ -4,10 +4,6 @@ import com.example.nexustechuniversity.Dto.LessonDto;
 import com.example.nexustechuniversity.mapper.LessonMapper;
 import com.example.nexustechuniversity.repository.LessonRepository;
 import com.example.nexustechuniversity.service.Impl.ILessonService;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,14 +21,8 @@ public class LessonService implements ILessonService {
     }
 
     @Override
-    public Page<LessonDto> getPaginatedLessons(int pageNumber, int pageSize) {
-        Pageable page = PageRequest.of(pageNumber, pageSize, Sort.by("idLesson").descending());
-        return lessonRepository.findAll(page).map(LessonMapper.INSTANCE::toLessonDto);
-    }
-
-    @Override
-    public List<LessonDto> getLessonsByCurso(long idCurso) {
-        return lessonRepository.findByIdCourse(idCurso)
+    public List<LessonDto> getLessonsByCurso(long idCourse) {
+        return lessonRepository.findByIdCourse(idCourse)
                 .stream()
                 .map(LessonMapper.INSTANCE::toLessonDto)
                 .toList();

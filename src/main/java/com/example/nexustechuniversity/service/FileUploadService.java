@@ -109,10 +109,8 @@ public class FileUploadService implements IFileUploadService {
             String imageUserUrl = result.get("secure_url").toString();
             personFile.setImage(imageUserUrl);
 
-
-            personService.createPerson(personFile);
             // Aquí deberías guardar la persona actualizada en la base de datos
-            // personService.updatePerson(personaFile);
+            personService.updatePerson(personFile);
 
 
         } catch (Exception e) {

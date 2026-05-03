@@ -1,5 +1,6 @@
 package com.example.nexustechuniversity.Dto;
 
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 @Getter
@@ -11,16 +12,13 @@ public class LessonDto {
 
     private long idLesson;
 
-    private long idCurso;
+    private long idCourse;
 
+    @NotBlank
     private String title;
-
-    private String description;
 
     private String summary;
 
-    private int order;
-
-    private boolean publicate;
+    private boolean published;
 
 }

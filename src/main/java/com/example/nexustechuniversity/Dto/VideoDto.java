@@ -20,9 +20,9 @@ public class VideoDto {
 
     private int durationSeg;
 
-    private int order;
+    private boolean published;
 
-    private boolean publicate;
+    private LocalDate createAt;
 
-    private LocalDate create;
+
 }

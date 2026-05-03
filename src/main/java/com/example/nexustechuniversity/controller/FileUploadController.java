@@ -2,6 +2,7 @@ package com.example.nexustechuniversity.controller;
 
 import com.example.nexustechuniversity.service.Impl.IFileUploadService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -15,6 +16,7 @@ public class FileUploadController {
         this.fileUploadService = fileUploadService;
     }
 
+    @PreAuthorize("isAuthenticated()")
     @PatchMapping("user/file/{id}")
     public ResponseEntity<?> fileUpdateImage(@PathVariable Long id , @RequestParam("image")MultipartFile file){
         fileUploadService.uploadImagePerson(id , file);
@@ -22,6 +24,7 @@ public class FileUploadController {
 
     }
 
+    @PreAuthorize("hasRole('INSTRUCTOR')")
     @PatchMapping("course/file/{id}")
     public ResponseEntity<?> fileUpdateCourseImage(@PathVariable Long id , @RequestParam("image")MultipartFile file){
         fileUploadService.uploadImageCourse(id , file);
