@@ -26,7 +26,13 @@ public class PersonService implements IPersonService {
     }
 
     @Override
-    public PersonDto update(PersonDto person) {
-        return PersonMapper.INSTANCE.toPersonDto( personRepository.save(PersonMapper.INSTANCE.toPerson(person)));
+    public PersonDto updatePerson(PersonDto person ) {
+            return PersonMapper.INSTANCE.toPersonDto( personRepository.save(PersonMapper.INSTANCE.toPerson(person)));
     }
+
+    @Override
+    public boolean existPerson(long idPerson) {
+        return personRepository.existsPersonByIdPerson(idPerson);
+    }
+
 }

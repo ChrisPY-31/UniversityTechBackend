@@ -1,5 +1,6 @@
 package com.example.nexustechuniversity.controller;
 
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -32,20 +33,19 @@ public class AuthController {
 	private final PersonRepository personRepository;
 
 	@PostMapping("/login")
-	public ResponseEntity<?> login(@RequestBody AuthRequest request) {
-		authManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
-		User user = userRepository.findByEmail(request.getEmail()).orElseThrow();
+	public ResponseEntity<?> login(@RequestBody  @Valid AuthRequest request) {
+		authManager.authenticate(new UsernamePasswordAuthenticationToken(request.username(), request.password()));
+		User user = userRepository.findByUsername(request.username()).orElseThrow();
 		String token = jwtService.generateToken(user);
 
 		return ResponseEntity.ok(new AuthResponse(token));
 	}
 
 	@PostMapping("/register")
-	public ResponseEntity<?> register(@RequestBody RegisterRequest request) {
+	public ResponseEntity<?> register(@RequestBody @Valid RegisterRequest request) {
 		Person person = new Person();
 		person.setName(request.getName());
 		person.setLastName(request.getLastName());
-		person.setPhone(request.getPhone());
 
 		personRepository.save(person);
 

@@ -3,6 +3,7 @@ package com.example.nexustechuniversity.Dto;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Getter
 @Setter
@@ -11,7 +12,7 @@ import java.time.LocalDate;
 @Builder
 public class CourseDto {
 
-    private long idCurso;
+    private long idCourse;
 
     private String title;
 
@@ -25,4 +26,5 @@ public class CourseDto {
 
     private LocalDate create;
 
+    private List<LessonDto> lessonsDto;
 }

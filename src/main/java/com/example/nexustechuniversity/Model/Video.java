@@ -25,6 +25,8 @@ public class Video {
 
     private String title;
 
+    private String description;
+
     @Column(name = "url_video")
     private String urlVideo;
 

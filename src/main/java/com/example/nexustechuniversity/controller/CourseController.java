@@ -18,14 +18,14 @@ public class CourseController {
         this.cursoService = cursoService;
     }
 
-    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("permitAll()")
     @GetMapping("cursos")
     public ResponseEntity<Page<CourseDto>> getCursos(
             @RequestParam(defaultValue = "0") int pageNumber,
             @RequestParam(defaultValue = "10") int pageSize) {
         return ResponseEntity.ok(cursoService.getPaginatedCursos(pageNumber, pageSize));
     }
-
+    @PreAuthorize("permitAll()")
     @GetMapping("cursos/{id}")
     public ResponseEntity<CourseDto> getCursoById(@PathVariable long id) {
         CourseDto course = cursoService.getCursoById(id);
@@ -41,7 +41,7 @@ public class CourseController {
     @PreAuthorize("hasRole('INSTRUCTOR')")
     @PutMapping("cursos/{id}")
     public ResponseEntity<CourseDto> updateCurso(@PathVariable long id, @RequestBody CourseDto updateCurso) {
-        updateCurso.setIdCurso(id);
+        updateCurso.setIdCourse(id);
         return ResponseEntity.ok(cursoService.updateCurso(updateCurso));
     }
 

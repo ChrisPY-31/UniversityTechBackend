@@ -9,6 +9,9 @@ public interface IPersonService {
 
     PersonDto createPerson(PersonDto person);
 
-    PersonDto update(PersonDto person);
+    PersonDto updatePerson(PersonDto person );
+
+    boolean existPerson(long idPerson);
+
 
 }

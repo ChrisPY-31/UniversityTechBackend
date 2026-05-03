@@ -4,6 +4,7 @@ import java.security.Key;
 import java.util.Date;
 import java.util.function.Function;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +16,8 @@ import io.jsonwebtoken.security.Keys;
 @Service
 public class JwtService {
 
-	private static final String SECRET_KEY = "my-secret-key-my-secret-key-my-secret-key";
+	@Value("${security.jwt.key.private}")
+	private String SECRET_KEY;
 
 	private Key getSingKey() {
 		return Keys.hmacShaKeyFor(SECRET_KEY.getBytes());

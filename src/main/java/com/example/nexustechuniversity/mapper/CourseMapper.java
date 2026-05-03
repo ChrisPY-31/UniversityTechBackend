@@ -11,10 +11,8 @@ public interface CourseMapper {
 
     CourseMapper INSTANCE = Mappers.getMapper(CourseMapper.class);
 
-    @Mapping(source = "idCurso", target = "idCourse")
     Course toCurso(CourseDto cursoDto);
 
-    @Mapping(source = "idCourse", target = "idCurso")
     CourseDto toCursoDto(Course curso);
 
 }
