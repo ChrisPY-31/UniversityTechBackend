@@ -2,6 +2,6 @@ package com.example.nexustechuniversity.utilities;
 
 public enum Role {
 	
-	ADMIN, INSTRUCTOR, USER
+	ADMIN, INSTRUCTOR, STUDENT
 
 }

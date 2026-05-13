@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido a Nexus Tech University</title>
+    <!--
+      ============================================================
+      PLANTILLA THYMELEAF - NEXUS TECH UNIVERSITY
+      ============================================================
+
+      Ubicación: src/main/resources/templates/email-bienvenida.html
+
+      Variables del modelo (Model):
+        nombreUsuario  → Nombre completo del estudiante
+        usuario        → Usuario de acceso
+        contrasena     → Contraseña temporal asignada
+        urlPlataforma  → URL de login (ej: http://localhost)
+
+      Logos:
+        Coloca los logos en: src/main/resources/static/img/
+          - nexus_logo.png
+          - uaem_logo.png
+        Se adjuntan como imágenes inline con CID (ver servicio Java)
+
+      ============================================================
+    -->
+    <style>
+        body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+        table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+        img { -ms-interpolation-mode: bicubic; border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; }
+        body { margin: 0 !important; padding: 0 !important; width: 100% !important; }
+    </style>
+</head>
+<body style="margin:0; padding:0; background-color:#0a0a0a; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+
+<!-- Wrapper -->
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#0a0a0a;">
+    <tr>
+        <td align="center" style="padding: 30px 10px;">
+
+            <!-- Container principal -->
+            <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px; width:100%; background-color:#111111; border-radius:12px; overflow:hidden; border: 1px solid #1a3a5c;">
+
+                <!-- ========== HEADER CON LOGO ========== -->
+                <tr>
+                    <td style="background: linear-gradient(135deg, #0a1628 0%, #0d2847 50%, #0a1628 100%); padding: 35px 30px; text-align: center;">
+
+                        <!-- Logo Nexus Tech (CID inline) -->
+                        <img src="cid:nexusLogo" alt="Nexus Tech University" width="180" style="display:block; margin: 0 auto 15px auto; max-width:180px;">
+
+                        <!-- Línea decorativa -->
+                        <table role="presentation" width="80" cellpadding="0" cellspacing="0" style="margin: 0 auto;">
+                            <tr>
+                                <td style="height:2px; background: linear-gradient(90deg, transparent, #4a90d9, transparent);"></td>
+                            </tr>
+                        </table>
+
+                    </td>
+                </tr>
+
+                <!-- ========== SALUDO ========== -->
+                <tr>
+                    <td style="padding: 35px 40px 15px 40px;">
+                        <h1 style="margin:0; color:#4a90d9; font-size:24px; font-weight:700; letter-spacing:0.5px;">
+                            ¡Bienvenido/a, <span th:text="${nombreUsuario}">Nombre del Estudiante</span>!
+                        </h1>
+                    </td>
+                </tr>
+
+                <!-- ========== MENSAJE PRINCIPAL ========== -->
+                <tr>
+                    <td style="padding: 10px 40px 25px 40px;">
+                        <p style="margin:0 0 18px 0; color:#c0c0c0; font-size:15px; line-height:1.7;">
+                            Tu cuenta en <strong style="color:#4a90d9;">Nexus Tech University</strong> ha sido creada exitosamente. A continuación encontrarás tus credenciales de acceso para ingresar a la plataforma de cursos.
+                        </p>
+                    </td>
+                </tr>
+
+                <!-- ========== CAJA DE CREDENCIALES ========== -->
+                <tr>
+                    <td style="padding: 0 40px 30px 40px;">
+                        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#0d1b2a; border-radius:10px; border: 1px solid #1a3a5c;">
+
+                            <!-- Título de la caja -->
+                            <tr>
+                                <td style="padding: 18px 25px 12px 25px; border-bottom: 1px solid #1a3a5c;">
+                                    <p style="margin:0; color:#4a90d9; font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:1.5px;">
+                                        &#128274; Credenciales de Acceso
+                                    </p>
+                                </td>
+                            </tr>
+
+                            <!-- Usuario -->
+                            <tr>
+                                <td style="padding: 18px 25px 8px 25px;">
+                                    <p style="margin:0; color:#888888; font-size:12px; text-transform:uppercase; letter-spacing:1px; font-weight:600;">Usuario</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 4px 25px 15px 25px;">
+                                    <p style="margin:0; color:#ffffff; font-size:17px; font-weight:600; font-family: 'Courier New', monospace; background-color:#0a1222; padding:10px 15px; border-radius:6px; border: 1px solid #1a3a5c;">
+                                        <span th:text="${usuario}">usuario@ejemplo.com</span>
+                                    </p>
+                                </td>
+                            </tr>
+
+                            <!-- Contraseña -->
+                            <tr>
+                                <td style="padding: 8px 25px 8px 25px;">
+                                    <p style="margin:0; color:#888888; font-size:12px; text-transform:uppercase; letter-spacing:1px; font-weight:600;">Contraseña</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 4px 25px 22px 25px;">
+                                    <p style="margin:0; color:#ffffff; font-size:17px; font-weight:600; font-family: 'Courier New', monospace; background-color:#0a1222; padding:10px 15px; border-radius:6px; border: 1px solid #1a3a5c;">
+                                        <span th:text="${contrasena}">********</span>
+                                    </p>
+                                </td>
+                            </tr>
+
+                        </table>
+                    </td>
+                </tr>
+
+                <!-- ========== BOTÓN DE ACCESO ========== -->
+                <tr>
+                    <td style="padding: 0 40px 15px 40px; text-align:center;">
+                        <table role="presentation" cellpadding="0" cellspacing="0" style="margin: 0 auto;">
+                            <tr>
+                                <td style="background: linear-gradient(135deg, #1a5fb4 0%, #4a90d9 100%); border-radius:8px;">
+                                    <a th:href="${urlPlataforma}" href="http://localhost" target="_blank" style="display:inline-block; padding:14px 45px; color:#ffffff; font-size:15px; font-weight:700; text-decoration:none; letter-spacing:0.5px; text-transform:uppercase;">
+                                        Ingresar a la Plataforma
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <!-- ========== NOTA DE SEGURIDAD ========== -->
+                <tr>
+                    <td style="padding: 10px 40px 30px 40px;">
+                        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#1a1a0a; border-radius:8px; border-left:3px solid #d4a017;">
+                            <tr>
+                                <td style="padding:14px 20px;">
+                                    <p style="margin:0; color:#d4a017; font-size:13px; line-height:1.6;">
+                                        <strong>&#9888;&#65039; Importante:</strong> Te recomendamos cambiar tu contraseña después de tu primer inicio de sesión. No compartas tus credenciales con nadie.
+                                    </p>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <!-- ========== SEPARADOR ========== -->
+                <tr>
+                    <td style="padding: 0 40px;">
+                        <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td style="height:1px; background: linear-gradient(90deg, transparent, #1a3a5c, transparent);"></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <!-- ========== FOOTER ========== -->
+                <tr>
+                    <td style="padding: 25px 40px 30px 40px; text-align:center;">
+
+                        <!-- Logo UAEM (CID inline) -->
+                        <img src="cid:uaemLogo" alt="UAEM" width="55" style="display:block; margin: 0 auto 12px auto; max-width:55px;">
+
+                        <p style="margin:0 0 6px 0; color:#555555; font-size:12px; line-height:1.5;">
+                            Nexus Tech University &middot; Universidad Autónoma del Estado de México
+                        </p>
+                        <p style="margin:0; color:#444444; font-size:11px; line-height:1.5;">
+                            Aprender nunca ha sido tan accesible
+                        </p>
+                        <p style="margin:15px 0 0 0; color:#333333; font-size:10px;">
+                            Este correo fue generado automáticamente. No respondas a este mensaje.
+                        </p>
+
+                    </td>
+                </tr>
+
+            </table>
+
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>

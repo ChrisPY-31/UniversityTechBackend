@@ -17,18 +17,18 @@ public class FileUploadController {
     }
 
     @PreAuthorize("isAuthenticated()")
-    @PatchMapping("user/file/{id}")
+    @PatchMapping("users/{id}/image")
     public ResponseEntity<?> fileUpdateImage(@PathVariable Long id , @RequestParam("image")MultipartFile file){
         fileUploadService.uploadImagePerson(id , file);
-        return ResponseEntity.ok("nice");
+        return ResponseEntity.ok("Imagen actualizada con exito");
 
     }
 
     @PreAuthorize("hasRole('INSTRUCTOR')")
-    @PatchMapping("course/file/{id}")
+    @PatchMapping("course/{id}/image")
     public ResponseEntity<?> fileUpdateCourseImage(@PathVariable Long id , @RequestParam("image")MultipartFile file){
         fileUploadService.uploadImageCourse(id , file);
-        return ResponseEntity.ok("nice");
+        return ResponseEntity.ok("Imagen actualizada con exito");
 
     }
 }
