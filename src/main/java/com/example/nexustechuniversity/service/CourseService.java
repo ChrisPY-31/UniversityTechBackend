@@ -1,7 +1,9 @@
 package com.example.nexustechuniversity.service;
 
 import com.example.nexustechuniversity.Dto.CourseDto;
+import com.example.nexustechuniversity.Dto.CourseResponseDto;
 import com.example.nexustechuniversity.mapper.CourseMapper;
+import com.example.nexustechuniversity.mapper.CourseResponseMapper;
 import com.example.nexustechuniversity.repository.CursoRepository;
 import com.example.nexustechuniversity.service.Impl.ICourseService;
 import org.springframework.data.domain.Page;
@@ -22,9 +24,9 @@ public class CourseService implements ICourseService {
     }
 
     @Override
-    public Page<CourseDto> getPaginatedCursos(int pageNumber, int pageSize) {
+    public Page<CourseResponseDto> getPaginatedCursos(int pageNumber, int pageSize) {
         Pageable page = PageRequest.of(pageNumber, pageSize, Sort.by("idCourse").descending());
-        return cursoRepository.findAll(page).map(CourseMapper.INSTANCE::toCursoDto);
+        return cursoRepository.findAll(page).map(CourseResponseMapper.INSTANCE::toCourseResponseDto);
     }
 
     @Override

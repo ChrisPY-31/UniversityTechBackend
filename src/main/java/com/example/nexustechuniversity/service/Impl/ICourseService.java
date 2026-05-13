@@ -1,12 +1,13 @@
 package com.example.nexustechuniversity.service.Impl;
 
 import com.example.nexustechuniversity.Dto.CourseDto;
+import com.example.nexustechuniversity.Dto.CourseResponseDto;
 import org.springframework.data.domain.Page;
 
 
 public interface ICourseService {
 
-    Page<CourseDto> getPaginatedCursos(int pageNumber, int pageSize);
+    Page<CourseResponseDto> getPaginatedCursos(int pageNumber, int pageSize);
 
     CourseDto getCursoById(long idCurso);
 
