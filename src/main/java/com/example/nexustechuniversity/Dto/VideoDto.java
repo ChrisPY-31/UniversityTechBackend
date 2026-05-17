@@ -16,13 +16,15 @@ public class VideoDto {
 
     private String title;
 
+    private String description;
+
     private String urlVideo;
 
     private int durationSeg;
 
     private boolean published;
 
-    private LocalDate createAt;
+    private LocalDate createAt = LocalDate.now();
 
 
 }

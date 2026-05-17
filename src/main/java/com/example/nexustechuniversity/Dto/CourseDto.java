@@ -24,7 +24,7 @@ public class CourseDto {
 
     private String image;
 
-    private LocalDate create;
+    private LocalDate createAt = LocalDate.now();
 
-    private List<LessonDto> lessonsDto;
+    private List<LessonDto> lessons;
 }

@@ -7,7 +7,9 @@ import org.mapstruct.factory.Mappers;
 
 import java.util.List;
 
-@Mapper
+@Mapper(uses={
+        VideoMapper.class
+})
 public interface LessonMapper {
 
     LessonMapper INSTANCE = Mappers.getMapper(LessonMapper.class);

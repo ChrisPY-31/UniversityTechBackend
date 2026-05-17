@@ -25,9 +25,8 @@ public class Lesson {
 
     private String title;
 
-    private String summary;
+    private String description;
 
-    private boolean published;
 
     @OneToMany(mappedBy = "lesson")
     private List<Video> videos;

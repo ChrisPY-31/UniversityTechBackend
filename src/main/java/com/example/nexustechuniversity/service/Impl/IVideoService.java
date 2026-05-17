@@ -3,14 +3,17 @@ package com.example.nexustechuniversity.service.Impl;
 import com.example.nexustechuniversity.Dto.VideoDto;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface IVideoService {
 
-    List<VideoDto> getVideos();
+    List<VideoDto> getVideosByLesson(long idLesson);
 
-    List<VideoDto> createVideos(List<VideoDto> videos);
+    Optional<VideoDto> getVideoById(long idVideo);
 
-    VideoDto updateVideo(VideoDto videos);
+    List<VideoDto> createVideo(List<VideoDto> video);
 
-    void deleteVideo(VideoDto video);
+    VideoDto updateVideo(VideoDto video);
+
+    void deleteVideo(long idVideo);
 }
