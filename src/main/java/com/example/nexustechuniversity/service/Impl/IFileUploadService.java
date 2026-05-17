@@ -8,4 +8,6 @@ public interface IFileUploadService {
 
     void uploadImagePerson(long id , MultipartFile file);
 
+    void uploadVideo(long id , MultipartFile file);
+
 }

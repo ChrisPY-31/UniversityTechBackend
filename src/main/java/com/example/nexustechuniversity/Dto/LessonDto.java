@@ -3,6 +3,8 @@ package com.example.nexustechuniversity.Dto;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -17,8 +19,8 @@ public class LessonDto {
     @NotBlank
     private String title;
 
-    private String summary;
+    private String description;
 
-    private boolean published;
+    private List<VideoDto> videos;
 
 }
