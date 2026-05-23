@@ -1,6 +1,7 @@
 package com.example.nexustechuniversity.service;
 
 import com.example.nexustechuniversity.Dto.VideoDto;
+import com.example.nexustechuniversity.Model.Video;
 import com.example.nexustechuniversity.mapper.VideoMapper;
 import com.example.nexustechuniversity.repository.LessonRepository;
 import com.example.nexustechuniversity.repository.VideoRepository;
@@ -48,9 +49,11 @@ public class VideoService implements IVideoService {
 
     @Override
     public VideoDto updateVideo(VideoDto video) {
-        videoRepository.findById(video.getIdVideo())
+        Video existing = videoRepository.findById(video.getIdVideo())
                 .orElseThrow(() -> new NoSuchElementException("Video no encontrado: " + video.getIdVideo()));
-        return VideoMapper.INSTANCE.toVideoDto(videoRepository.save(VideoMapper.INSTANCE.toVideo(video)));
+        Video updated = VideoMapper.INSTANCE.toVideo(video);
+        updated.setIdLesson(existing.getIdLesson());
+        return VideoMapper.INSTANCE.toVideoDto(videoRepository.save(updated));
     }
 
     @Override

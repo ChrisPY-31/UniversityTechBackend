@@ -33,7 +33,6 @@ public class AuthController {
 
 	private final AuthenticationManager authManager;
 	private final UserRepository userRepository;
-	private final PersonService personService;
 	private final JwtService jwtService;
 	private final PasswordEncoder passwordEncoder;
 	private final PersonRepository personRepository;
@@ -50,7 +49,7 @@ public class AuthController {
 	}
 
 	@PostMapping("/register")
-	public ResponseEntity<?> register(@RequestBody  RegisterRequest request, HttpServletResponse response) {
+	public ResponseEntity<?> register(@Valid @RequestBody RegisterRequest request, HttpServletResponse response) {
 		Person person = new Person();
 		person.setName(request.getName());
 		person.setLastName(request.getLastName());

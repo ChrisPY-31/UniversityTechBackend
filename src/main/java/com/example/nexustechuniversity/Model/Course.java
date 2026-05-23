@@ -22,6 +22,9 @@ public class Course {
     @Column(name = "id_course")
     private long idCourse;
 
+    @Column(name = "id_instructor")
+    private long instructorId;
+
     private String title;
 
     private String description;
@@ -32,9 +35,15 @@ public class Course {
 
     private String image;
 
+    private boolean published;
+
     @Column(name = "create_at")
     private LocalDate createAt;
 
-    @OneToMany(mappedBy = "course")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_person")
+    private Person instructor;
+
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
     List<Lesson> lessons;
 }

@@ -20,5 +20,10 @@ public class CourseResponseDto {
 
     private String image;
 
+    private String published;
+
+    private Long instructorId;
+
+    private String instructorName;
 
 }

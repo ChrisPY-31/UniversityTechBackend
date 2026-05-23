@@ -17,4 +17,6 @@ public interface ICourseService {
 
     void deleteCurso(long idCurso);
 
+    Page<CourseResponseDto> getCoursesByInstructor(Long instructorId, int pageNumber, int pageSize);
+
 }

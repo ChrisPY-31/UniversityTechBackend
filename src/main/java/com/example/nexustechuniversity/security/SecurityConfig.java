@@ -39,6 +39,7 @@ public class SecurityConfig {
 								//Rutas publicas
 						auth -> auth.requestMatchers("/auth/**").permitAll()
 								//Rutas privadas Administrador
+								.requestMatchers(HttpMethod.GET , "/api/v1/persons").hasRole("ADMIN")
 								.requestMatchers(HttpMethod.POST , "/api/v1/person").hasRole("ADMIN")
 								//Rutas privadas Instructor
 								.requestMatchers("/api/v1/lessons/**").hasRole("INSTRUCTOR")
