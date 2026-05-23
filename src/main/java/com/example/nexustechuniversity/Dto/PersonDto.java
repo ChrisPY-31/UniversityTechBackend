@@ -2,6 +2,8 @@ package com.example.nexustechuniversity.Dto;
 
 import lombok.*;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -18,4 +20,6 @@ public class PersonDto {
     private String phone;
 
     private String image;
+
+    private List<CourseResponseDto> courses;
 }

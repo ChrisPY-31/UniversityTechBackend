@@ -21,13 +21,15 @@ public class RegisterRequest {
 	@Email(message = "Email no valido")
 	private String email;
 
-	@Min(4)
-	@Max(8)
+
 	@NotBlank(message = "Contraseña vacia")
 	private String password;
 	private Role role;
 	
+	@NotBlank(message = "El nombre no debe estar vacío")
 	private String name;
+
+	@NotBlank(message = "El apellido no debe estar vacío")
 	private String lastName;
 
 }

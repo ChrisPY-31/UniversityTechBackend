@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Table(name = "person")
 @Getter @Setter
@@ -22,9 +24,9 @@ public class Person {
     @Column(name = "last_name")
     private String lastName;
 
-
     private String phone;
 
     private String image;
+
 
 }

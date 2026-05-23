@@ -28,7 +28,7 @@ public class Lesson {
     private String description;
 
 
-    @OneToMany(mappedBy = "lesson")
+    @OneToMany(mappedBy = "lesson", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Video> videos;
 
     @ManyToOne

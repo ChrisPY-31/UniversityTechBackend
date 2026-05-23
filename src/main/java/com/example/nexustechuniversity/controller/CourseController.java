@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("api/v1/")
 public class CourseController {
@@ -32,7 +34,7 @@ public class CourseController {
         CourseDto course = cursoService.getCursoById(id);
         return new ResponseEntity<>(course , HttpStatus.OK);
     }
-
+    
     @PreAuthorize("hasRole('INSTRUCTOR')")
     @PostMapping("courses")
     public ResponseEntity<CourseDto> saveCurso(@RequestBody CourseDto curso) {
@@ -52,5 +54,15 @@ public class CourseController {
         cursoService.deleteCurso(id);
         return ResponseEntity.noContent().build();
     }
+
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping("instructor/{id}/courses")
+    public ResponseEntity<Page<CourseResponseDto>> getCoursesByInstructor(
+            @PathVariable long id,
+            @RequestParam(defaultValue = "0") int pageNumber,
+            @RequestParam(defaultValue = "10") int pageSize) {
+        return ResponseEntity.ok(cursoService.getCoursesByInstructor(id, pageNumber, pageSize));
+    }
+
 
 }

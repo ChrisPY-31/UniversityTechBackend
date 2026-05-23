@@ -3,11 +3,11 @@ package com.example.nexustechuniversity.service;
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 import com.example.nexustechuniversity.Dto.CourseDto;
-import com.example.nexustechuniversity.Dto.PersonDto;
 import com.example.nexustechuniversity.Dto.VideoDto;
+import com.example.nexustechuniversity.Model.Person;
+import com.example.nexustechuniversity.repository.PersonRepository;
 import com.example.nexustechuniversity.service.Impl.ICourseService;
 import com.example.nexustechuniversity.service.Impl.IFileUploadService;
-import com.example.nexustechuniversity.service.Impl.IPersonService;
 import com.example.nexustechuniversity.service.Impl.IVideoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,7 +28,7 @@ public class FileUploadService implements IFileUploadService {
     private ICourseService courseService;
 
     @Autowired
-    private IPersonService personService;
+    private PersonRepository personRepository;
 
     @Autowired
     private IVideoService videoService;
@@ -84,7 +84,8 @@ public class FileUploadService implements IFileUploadService {
 
         List<String> allowedExtensions = Arrays.asList("jpg", "jpeg", "png", "webp", "avif");
 
-        PersonDto personFile = personService.getPersonId(id);
+        Person person = personRepository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("Persona no encontrada: " + id));
 
         if (file == null || file.isEmpty()) {
             throw new RuntimeException("File is null or empty");
@@ -110,12 +111,8 @@ public class FileUploadService implements IFileUploadService {
                     ObjectUtils.asMap("folder", "Usuarios")
             );
 
-            String imageUserUrl = result.get("secure_url").toString();
-            personFile.setImage(imageUserUrl);
-
-            // Aquí deberías guardar la persona actualizada en la base de datos
-            personService.updatePerson(personFile);
-
+            person.setImage(result.get("secure_url").toString());
+            personRepository.save(person);
 
         } catch (Exception e) {
             throw new RuntimeException("Error uploading file: " + e.getMessage());

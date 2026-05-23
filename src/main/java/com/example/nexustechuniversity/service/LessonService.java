@@ -1,6 +1,7 @@
 package com.example.nexustechuniversity.service;
 
 import com.example.nexustechuniversity.Dto.LessonDto;
+import com.example.nexustechuniversity.Model.Lesson;
 import com.example.nexustechuniversity.mapper.LessonMapper;
 import com.example.nexustechuniversity.repository.LessonRepository;
 import com.example.nexustechuniversity.service.Impl.ILessonService;
@@ -47,6 +48,7 @@ public class LessonService implements ILessonService {
 
     @Override
     public void deleteLesson(long idLesson) {
-        lessonRepository.deleteById(idLesson);
+        Lesson lesson = lessonRepository.findById(idLesson).orElseThrow(() -> new RuntimeException("Error lession no encontrada"));
+        lessonRepository.delete(lesson);
     }
 }

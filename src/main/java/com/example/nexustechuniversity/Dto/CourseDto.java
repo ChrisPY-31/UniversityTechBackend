@@ -14,6 +14,8 @@ public class CourseDto {
 
     private long idCourse;
 
+    private Long instructorId;
+
     private String title;
 
     private String description;
@@ -23,6 +25,8 @@ public class CourseDto {
     private String nevel;
 
     private String image;
+
+    private boolean published;
 
     private LocalDate createAt = LocalDate.now();
 
